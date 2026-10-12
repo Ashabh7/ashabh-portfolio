@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   ArrowDownRight,
@@ -15,6 +15,7 @@ import {
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   const projects = [
     {
@@ -25,7 +26,7 @@ function App() {
         "A food-ordering and restaurant-management project built to connect the customer experience with restaurant-side workflows.",
       stack: ["React", "Node.js", "Express", "MongoDB"],
       github: "https://github.com/Ashabh7/ding-frontend",
-      live: "",
+      live: "https://ding-snowy.vercel.app/",
       visual: "food",
     },
     {
@@ -35,9 +36,8 @@ function App() {
       description:
         "A blog platform with authentication and post management. Users can create, edit, and delete their own posts while reading published content.",
       stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
-      github:
-        "https://github.com/Ashabh7/Mern_Blogs_App_Frontend",
-      live: "",
+      github: "https://github.com/Ashabh7/Mern_Blogs_App_Frontend",
+      live: "https://blogosphere-mu-two.vercel.app/",
       visual: "blog",
     },
     {
@@ -48,7 +48,7 @@ function App() {
         "An expense-tracking application built to record expenses and retrieve information through a backend API.",
       stack: ["React", "Express", "MongoDB", "REST API"],
       github: "https://github.com/Ashabh7",
-      live: "",
+      live: "https://expense-tracker-frontend-nu-drab.vercel.app/",
       visual: "expense",
     },
   ];
@@ -61,14 +61,15 @@ function App() {
       location: "Kochi, Kerala",
       description:
         "MERN Stack training covering frontend and backend web development.",
+      image: "/certificates/avodha-mern.jpg",
     },
     {
       number: "02",
       title: "MERN Stack Development",
       issuer: "National Skill Development Corporation",
       location: "NSDC",
-      description:
-        "MERN Stack development certification.",
+      description: "MERN Stack development certification.",
+      image: "/certificates/nsdc-mern.jpg",
     },
   ];
 
@@ -98,6 +99,21 @@ function App() {
   function closeMenu() {
     setMenuOpen(false);
   }
+
+  // Close the certificate popup when Escape is pressed.
+  useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setSelectedCertificate(null);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <div className="site-shell">
@@ -285,7 +301,7 @@ function App() {
                       <a
                         href={project.live}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                       >
                         Live demo <ArrowUpRight size={15} />
                       </a>
@@ -298,7 +314,7 @@ function App() {
                     <a
                       href={project.github}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                     >
                       Source code <Code2 size={15} />
                     </a>
@@ -331,9 +347,12 @@ function App() {
 
           <div className="certification-grid">
             {certifications.map((certificate) => (
-              <article
+              <button
+                type="button"
                 className="certification-card"
                 key={certificate.number}
+                onClick={() => setSelectedCertificate(certificate)}
+                aria-label={`View ${certificate.title} certificate from ${certificate.issuer}`}
               >
                 <div className="certification-top">
                   <span className="certification-icon">
@@ -358,10 +377,55 @@ function App() {
                 <p className="certification-description">
                   {certificate.description}
                 </p>
-              </article>
+
+                <span className="certificate-view-link">
+                  View certificate <ArrowUpRight size={15} />
+                </span>
+              </button>
             ))}
           </div>
         </section>
+
+        {/* CERTIFICATE IMAGE POPUP */}
+        {selectedCertificate && (
+          <div
+            className="certificate-modal"
+            onClick={() => setSelectedCertificate(null)}
+          >
+            <div
+              className="certificate-modal-content"
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${selectedCertificate.title} certificate`}
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="certificate-modal-header">
+                <div>
+                  <p className="certificate-modal-label">
+                    CERTIFICATE PREVIEW
+                  </p>
+
+                  <h3>{selectedCertificate.issuer}</h3>
+                </div>
+
+                <button
+                  type="button"
+                  className="certificate-modal-close"
+                  onClick={() => setSelectedCertificate(null)}
+                  aria-label="Close certificate preview"
+                >
+                  <X size={22} />
+                </button>
+              </div>
+
+              <img
+                src={selectedCertificate.image}
+                alt={`${selectedCertificate.title} certificate from ${selectedCertificate.issuer}`}
+                className="certificate-modal-image"
+              />
+            </div>
+          </div>
+        )}
 
         {/* ABOUT */}
         <section className="about section-wrap section-block" id="about">
@@ -547,36 +611,36 @@ function App() {
 
               <a
                 className="button button-primary"
-                href="mailto:YOUR_EMAIL@example.com"
+                href="mailto:mohdashabh@gmail.com"
               >
                 Say hello <Mail size={16} />
               </a>
             </div>
 
             <div className="contact-links">
-              <a href="mailto:YOUR_EMAIL@example.com">
+              <a href="mailto:mohdashabh@gmail.com">
                 <span>Email</span>
-                <strong>YOUR_EMAIL@example.com</strong>
+                <strong>mohdashabh@gmail.com</strong>
                 <ArrowUpRight size={17} />
               </a>
 
               <a
                 href="https://github.com/Ashabh7"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <span>GitHub</span>
-                <strong>github.com/Ashabh7</strong>
+                <strong>github.com/Ashabh</strong>
                 <ArrowUpRight size={17} />
               </a>
 
               <a
-                href="https://www.linkedin.com/"
+                href="https://www.linkedin.com/in/muhammed-ashabh-kp-b53118245/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 <span>LinkedIn</span>
-                <strong>Add your LinkedIn profile</strong>
+                <strong>linkedin.com/Ashabh</strong>
                 <ArrowUpRight size={17} />
               </a>
             </div>
