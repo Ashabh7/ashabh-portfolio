@@ -583,6 +583,91 @@ h2 span {
   font-size: 9px;
 }
 
+/* CERTIFICATIONS */
+
+.certifications {
+  border-top: 1px solid var(--border);
+  margin-top: 90px;
+}
+
+.certification-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.certification-card {
+  padding: 26px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  min-width: 0;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.certification-card:hover {
+  transform: translateY(-4px);
+  border-color: #c9f36a55;
+}
+
+.certification-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.certification-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  color: var(--accent);
+  background: #c9f36a12;
+  border: 1px solid #c9f36a24;
+  border-radius: 5px;
+}
+
+.certification-number {
+  color: #858b95;
+  font: 9px var(--mono);
+  letter-spacing: 0.08em;
+  text-align: right;
+}
+
+.certification-card h3 {
+  font-size: 19px;
+  line-height: 1.5;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+
+.certification-issuer {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.7;
+  margin-bottom: 5px;
+}
+
+.certification-location {
+  color: var(--accent);
+  font: 10px var(--mono);
+  margin-bottom: 18px;
+}
+
+.certification-description {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+  margin-bottom: 0;
+}
+
 /* ABOUT */
 
 .about {
@@ -895,6 +980,10 @@ h2 span {
     min-height: 0;
   }
 
+  .certification-grid {
+    grid-template-columns: 1fr;
+  }
+
   .skills-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1027,6 +1116,14 @@ h2 span {
 
   .project-content > p {
     min-height: 0;
+  }
+
+  .certifications {
+    margin-top: 65px;
+  }
+
+  .certification-card {
+    padding: 21px;
   }
 
   .about {

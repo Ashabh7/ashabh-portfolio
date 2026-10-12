@@ -35,7 +35,8 @@ function App() {
       description:
         "A blog platform with authentication and post management. Users can create, edit, and delete their own posts while reading published content.",
       stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
-      github: "https://github.com/Ashabh7/Mern_Blogs_App_Frontend",
+      github:
+        "https://github.com/Ashabh7/Mern_Blogs_App_Frontend",
       live: "",
       visual: "blog",
     },
@@ -49,6 +50,25 @@ function App() {
       github: "https://github.com/Ashabh7",
       live: "",
       visual: "expense",
+    },
+  ];
+
+  const certifications = [
+    {
+      number: "01",
+      title: "MERN Stack Development",
+      issuer: "Avodha Institutions",
+      location: "Kochi, Kerala",
+      description:
+        "MERN Stack training covering frontend and backend web development.",
+    },
+    {
+      number: "02",
+      title: "MERN Stack Development",
+      issuer: "National Skill Development Corporation",
+      location: "NSDC",
+      description:
+        "MERN Stack development certification.",
     },
   ];
 
@@ -102,6 +122,10 @@ function App() {
             Projects
           </a>
 
+          <a href="#certifications" onClick={closeMenu}>
+            Certifications
+          </a>
+
           <a href="#about" onClick={closeMenu}>
             About
           </a>
@@ -129,7 +153,9 @@ function App() {
               OPEN TO OPPORTUNITIES
             </div>
 
-            <p className="eyebrow">FULL-STACK DEVELOPER · KERALA, INDIA</p>
+            <p className="eyebrow">
+              FULL-STACK DEVELOPER · KERALA, INDIA
+            </p>
 
             <h1>
               Hi, I'm Ashabh.
@@ -138,9 +164,9 @@ function App() {
             </h1>
 
             <p className="hero-intro">
-              I'm a developer focused on building practical, user-friendly web
-              experiences with the MERN stack — from clean interfaces to working
-              APIs.
+              I'm a developer focused on building practical,
+              user-friendly web experiences with the MERN stack —
+              from clean interfaces to working APIs.
             </p>
 
             <div className="hero-actions">
@@ -202,7 +228,10 @@ function App() {
         </section>
 
         {/* PROJECTS */}
-        <section className="projects section-wrap section-block" id="projects">
+        <section
+          className="projects section-wrap section-block"
+          id="projects"
+        >
           <div className="section-heading">
             <div>
               <p className="eyebrow">SELECTED WORK</p>
@@ -253,7 +282,11 @@ function App() {
 
                   <div className="project-links">
                     {project.live ? (
-                      <a href={project.live} target="_blank" rel="noreferrer">
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
                         Live demo <ArrowUpRight size={15} />
                       </a>
                     ) : (
@@ -262,11 +295,69 @@ function App() {
                       </span>
                     )}
 
-                    <a href={project.github} target="_blank" rel="noreferrer">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       Source code <Code2 size={15} />
                     </a>
                   </div>
                 </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* CERTIFICATIONS */}
+        <section
+          className="certifications section-wrap section-block"
+          id="certifications"
+        >
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">PROFESSIONAL DEVELOPMENT</p>
+
+              <h2>
+                My <span>certifications.</span>
+              </h2>
+            </div>
+
+            <p className="section-aside">
+              Credentials earned while developing my full-stack
+              web development skills.
+            </p>
+          </div>
+
+          <div className="certification-grid">
+            {certifications.map((certificate) => (
+              <article
+                className="certification-card"
+                key={certificate.number}
+              >
+                <div className="certification-top">
+                  <span className="certification-icon">
+                    <Award size={23} />
+                  </span>
+
+                  <span className="certification-number">
+                    CERTIFICATE / {certificate.number}
+                  </span>
+                </div>
+
+                <h3>{certificate.title}</h3>
+
+                <p className="certification-issuer">
+                  {certificate.issuer}
+                </p>
+
+                <p className="certification-location">
+                  {certificate.location}
+                </p>
+
+                <p className="certification-description">
+                  {certificate.description}
+                </p>
               </article>
             ))}
           </div>
@@ -291,18 +382,19 @@ function App() {
               <span className="quote-mark">“</span>
 
               <p>
-                I enjoy turning ideas into useful products, solving problems
-                through code, and learning by building things that work in the
-                real world.
+                I enjoy turning ideas into useful products,
+                solving problems through code, and learning
+                by building things that work in the real world.
               </p>
             </div>
 
             <div className="about-detail">
               <p>
-                I'm a Computer Science student and aspiring full-stack developer
-                from Kerala. I've been building projects with React, Node.js,
-                Express, and MongoDB, and I'm looking for an opportunity to grow
-                with a development team.
+                I'm a Computer Science student and aspiring
+                full-stack developer from Kerala. I've been
+                building projects with React, Node.js, Express,
+                and MongoDB, and I'm looking for an opportunity
+                to grow with a development team.
               </p>
 
               <a className="text-link" href="#contact">
@@ -336,7 +428,9 @@ function App() {
                     <Icon size={19} />
                   </span>
 
-                  <span className="skill-number">0{index + 1}</span>
+                  <span className="skill-number">
+                    0{index + 1}
+                  </span>
                 </div>
 
                 <h3>{title}</h3>
@@ -352,7 +446,10 @@ function App() {
         </section>
 
         {/* EXPERIENCE AND EDUCATION */}
-        <section className="journey section-wrap section-block" id="journey">
+        <section
+          className="journey section-wrap section-block"
+          id="journey"
+        >
           <div className="section-heading">
             <div>
               <p className="eyebrow">THE JOURNEY SO FAR</p>
@@ -375,8 +472,9 @@ function App() {
                 <h4>Store Manager · Chickart</h4>
 
                 <p>
-                  Handled day-to-day store operations, customer service, and
-                  coordination in a fast-paced food-service environment.
+                  Handled day-to-day store operations,
+                  customer service, and coordination in a
+                  fast-paced food-service environment.
                 </p>
               </article>
 
@@ -388,8 +486,8 @@ function App() {
                 <h4>MERN Stack Development · Avodha</h4>
 
                 <p>
-                  Training in frontend and backend web development, supported by
-                  hands-on projects.
+                  Training in frontend and backend web
+                  development, supported by hands-on projects.
                 </p>
               </article>
             </div>
@@ -404,7 +502,10 @@ function App() {
 
                 <h4>B.Sc. Computer Science</h4>
 
-                <p>MES College of Arts and Science · Kannur University</p>
+                <p>
+                  MES College of Arts and Science ·
+                  Kannur University
+                </p>
 
                 <span className="status-pill">4 papers remaining</span>
               </article>
@@ -423,10 +524,15 @@ function App() {
         </section>
 
         {/* CONTACT */}
-        <section className="contact section-wrap section-block" id="contact">
+        <section
+          className="contact section-wrap section-block"
+          id="contact"
+        >
           <div className="contact-panel">
             <div className="contact-copy">
-              <p className="eyebrow">HAVE A ROLE OR PROJECT IN MIND?</p>
+              <p className="eyebrow">
+                HAVE A ROLE OR PROJECT IN MIND?
+              </p>
 
               <h2>
                 Let's make
@@ -435,8 +541,8 @@ function App() {
               </h2>
 
               <p>
-                I'm open to junior developer opportunities, internships, and
-                collaborations.
+                I'm open to junior developer opportunities,
+                internships, and collaborations.
               </p>
 
               <a
