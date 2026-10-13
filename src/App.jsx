@@ -53,6 +53,7 @@ function App() {
     },
   ];
 
+  // Each certificate can contain one or more image pages.
   const certifications = [
     {
       number: "01",
@@ -61,7 +62,10 @@ function App() {
       location: "Kochi, Kerala",
       description:
         "MERN Stack training covering frontend and backend web development.",
-      image: "/certificates/avodha-mern.jpg",
+      images: [
+        "/certificates/avodha-mern-1.jpg",
+        "/certificates/avodha-mern-2.jpg",
+      ],
     },
     {
       number: "02",
@@ -69,7 +73,7 @@ function App() {
       issuer: "National Skill Development Corporation",
       location: "NSDC",
       description: "MERN Stack development certification.",
-      image: "/certificates/nsdc-mern.jpg",
+      images: ["/certificates/nsdc-mern.jpg"],
     },
   ];
 
@@ -418,11 +422,20 @@ function App() {
                 </button>
               </div>
 
-              <img
-                src={selectedCertificate.image}
-                alt={`${selectedCertificate.title} certificate from ${selectedCertificate.issuer}`}
-                className="certificate-modal-image"
-              />
+              {/* Render every page belonging to the selected certificate. */}
+              <div className="certificate-modal-pages">
+                {selectedCertificate.images.map((image, index) => (
+                  <img
+                    key={image}
+                    src={image}
+                    alt={`${selectedCertificate.title} certificate, page ${
+                      index + 1
+                    }`}
+                    className="certificate-modal-image"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         )}
